@@ -1,0 +1,25 @@
+{
+  "name": "energizeus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "powerReader.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dianna/energizeus.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dianna/energizeus/issues"
+  },
+  "homepage": "https://github.com/Dianna/energizeus#readme",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1",
+    "shelljs": "^0.5.1"
+  }
+}

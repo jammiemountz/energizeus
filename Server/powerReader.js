@@ -22,11 +22,20 @@ var getWatts = function(string){
   var end = string.indexOf('w');
   var watts = string.slice(start, end);
   watts = parseInt(watts);
-  if (end > 0){
-    total += watts;
+  var kwh = watts / 1000 * .0028;
+  if (watts){
+    total += kwh;
   }
+  var timeStart = string.indexOf('[2')+1;
+  var timeEnd = string.indexOf('] ')-13;
+  var time = string.slice(timeStart, timeEnd);
+  var obj = {
+    time: time,
+    kwh: kwh,
+    total: total
+  };
+  console.log(obj);
   // console.log('string: ', string, ' total: ', total, ' start: ', start, ' end: ', end, ' watts: ', watts);
-  console.log('total: ', total); // logs to server
   cbDone = true;
 }
 

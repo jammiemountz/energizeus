@@ -20,6 +20,7 @@
   "dependencies": {
     "body-parser": "^1.13.2",
     "express": "^4.13.1",
+    "path": "^0.11.14",
     "shelljs": "^0.5.1"
   }
 }

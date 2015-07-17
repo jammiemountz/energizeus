@@ -6,7 +6,8 @@
 
 var shell = require('shelljs'),
     make = require('shelljs/make'),
-    fs = require('fs');
+    fs = require('fs'),
+    io = require('./server').io;
     // watch = require('node-watch'); If necessary, can be used to execute function on file change
 
 // Total wattage since start
@@ -17,6 +18,13 @@ var total = 0;
 
 // Grab wattage information from string
 // It is used as the callback in the function readLines
+var energyUse = { time: '', kwh: .02, total: .02 };
+io.on('connection', function(socket){
+  socket.on('energy', function(){
+    // io.emit('energy', )
+    console.log('emit')
+  });
+});
 var getWatts = function(string){
   var start = string.indexOf(': ')+2;
   var end = string.indexOf('w');
@@ -34,7 +42,10 @@ var getWatts = function(string){
     kwh: kwh,
     total: total
   };
+  energyUse = obj;
   console.log(obj);
+  
+  // io.emit('energy', obj);
   // console.log('string: ', string, ' total: ', total, ' start: ', start, ' end: ', end, ' watts: ', watts);
   cbDone = true;
 }

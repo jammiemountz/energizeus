@@ -1,5 +1,6 @@
-console.log('hello');
+var socket = io();
 
 socket.on('energy', function(energy){
-    $('.energy').append(energy);
+  console.log('energy in appjs', energy)
+    $('.energy').text(energy.total);
 });

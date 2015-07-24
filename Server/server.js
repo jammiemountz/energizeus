@@ -4,12 +4,21 @@ var path = require('path');
 // require('./powerReader.js');
 var app = express();
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var io = require('../client/bower_components/socket.io')(http);
+
+var shell = require('shelljs'),
+    make = require('shelljs/make'),
+    fs = require('fs');
 
 var port = process.env.PORT || 3030;
 // app.listen(port);
 
 app.use(express.static( '../client'));
+app.post('/api/on', function(req,res){
+  console.log('in energizeus app post')
+  shell.exec('hacklet on -n 0x2777 -s 0')
+});
+
 
 // io.on('connection', function(socket){
 //   socket.on('energy', function(){
@@ -30,10 +39,6 @@ http.listen(port, function(){
 
 // I, [2015-07-13T20:06:15.137579 #84220]  INFO -- : 45w at 2015-07-13 20:06:01 -0700
 // ^This is what the wattage line of data looks like
-
-var shell = require('shelljs'),
-    make = require('shelljs/make'),
-    fs = require('fs');
     // watch = require('node-watch'); If necessary, can be used to execute function on file change
 
 // Total wattage since start
